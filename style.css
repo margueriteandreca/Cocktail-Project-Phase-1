@@ -1,10 +1,42 @@
-body {
-    background: rgb(19, 19, 90);
-    font-family: 'Courier New', Courier, monospace;
 
+
+#main-container {
+    background-color: rgb(36, 36, 36);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+}
+
+#drink-menu {
+    display: flex;
+    padding-top: 300px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    width: 300px;
+    height: 100vh;
+    background-color: rgb(67, 67, 75);
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0; 
+    overflow-y: scroll;
 
 }
 
+#inner-menu-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#menu-title {
+    display: flex;
+    padding: 0px;
+    position: relative;
+}
 
 h2 {
     color: whitesmoke;
@@ -15,7 +47,128 @@ p {
     color: whitesmoke;
 }
 
+#drink-menu h2 {
+    display: list-item;
+    font-size: 30px;
+    letter-spacing: 4px;
+    padding: 15px;
+
+}
+
+
+#drink-menu img {
+    width: 200px;
+    height: 200px;
+    display: list-item;
+    padding: 20px;
+    padding-top: 20px;
+    
+}
+
+#drink-menu img:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+    filter: drop-shadow(0 0 0.5rem whitesmoke);
+}
+
+
+
 
 #drink-details {
     display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 80vw;
+    align-items: center;
+
 }
+
+#detail-div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+}
+
+#display-classic-drink {
+    background-color: brown;
+}
+
+#create-drink-div {
+    background-color: blueviolet;
+
+}
+
+section {
+    margin: 50px;
+}
+
+a:link, a:visited {
+    color: rgb(183, 181, 181);
+    text-decoration: none;
+}
+
+a:hover {
+    color:rgb(183, 181, 181);
+    text-decoration: underline;
+}
+
+#edit-drink-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#edit-drink-div input {
+    padding: 10px 10px;
+    width: calc(100% -30px);
+    border: none;
+    border-radius: 1px;
+    background-color: grey;
+    
+}
+
+#autocomplete-list {
+    /* position: absolute; */
+    top: 60;
+    left: 0;
+    color: whitesmoke;
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: grey;
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+#add-ingredient::placeholder {
+    color: whitesmoke;
+    font-family: "Oswald", sans-serif;
+}
+
+#autocomplete-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+
+body {
+    background: rgb(36, 36, 36);
+    color: whitesmoke;
+    font-family: "Oswald", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    list-style: none;
+
+}
+
+/* body::-webkit-scrollbar{
+
+} */
