@@ -4,7 +4,8 @@
     <title>American Cocktails</title>
         <link rel="stylesheet" href="style.css" id="css-file"/>
         <!-- <script defer src="./index.js"></script> -->
-        <script defer src="./menutodetails.js"></script>
+        <!-- <script defer src="./menutodetails.js"></script> -->
+        <script defer src="./dropdown.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com"> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
@@ -49,16 +50,17 @@
                 
             
             <div id="edit-drink-div">
-                <form id="edit-drink-form">
+                <div id="edit-drink-dropdown"> 
                     <label for="add-ingredient">Add your poison:</label><br>
                     <input type="text" id="add-ingredient" name="add-ingredient" placeholder="Ingredient"><br>
-
-                    <ul id="autocomplete-list">
-                        <li>Vodka</li>
-                        <li>Lemon</li>
-                        <li>Lime</li>
-                        <li>Grapefruit</li>
-                    </ul>
+                    <div id="autocomplete-list">
+                        <ul>
+                            <!-- <li>Vodka</li>
+                            <li>Lemon</li>
+                            <li>Lime</li>
+                            <li>Grapefruit</li> -->
+                        </ul>
+                    </div>
                     
                     <!-- <label for="mixer-1">Mixer 1:</label><br>
                     <input type="text" id="mixer-1" name="mixer-1"><br>
@@ -68,7 +70,7 @@
     
                     <label for="mix"></label><br>
                     <input type="submit" id="mix" name="mix" value="Mix it in!"><br>
-                  </form>
+                    </div>
                 
             </div>
         </div>

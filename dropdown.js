@@ -1,39 +1,68 @@
 
-//drop down menu that autocompletes ingredient typed into input 
-
-// })
-//need to get array of ingredients 
-fetch("https://localhost.3000/ingredients")
+fetch("http://localhost:3000/ingredients")
 .then(res => res.json())
 .then(ingredientsArray => {
-    populateDropdown(ingredientsArray);
-
+    // populateDropdown(ingredientsArray);
+    createDropDownIngredients(ingredientsArray)
 });
 
-const ingredientList = document.getElementById("autocomplete-list");
+const dropDown = document.getElementById("edit-drink-dropdown");
+const ingredientListResults = document.getElementById("autocomplete-list");
 const ingredientInput = document.getElementById("add-ingredient");
 
 
-function populateDropdown(data) {
-    if (data) {
-    const addedIngredient = document.createElement("li");
-    addedIngredient.textContent = ""
-    data.forEach(ingredient => {
-        addedIngredient.textContent = ingredient.strIngredient1;
-        ingredientList.append(addedIngredient);
-})
-    }
-};
+function createDropDownIngredients(ingredientsArray) {
+    // console.log(ingredientsArray)
+    ingredientInput.addEventListener("keyup", (e) => {
+        console.log(e.target.value);
+        let results = [];
+        let input = ingredientInput.value;
+        if (input.length) {
+            results = ingredientsArray.filter((ingredient) => {
+            return ingredient.toLowerCase().includes(input.toLowerCase())
+        });
+        }
+        populateDropdown(results);
+    });
+    };
 
-function filterIngredients (ingredientsArray, searchText) {
-    ingredientsArray.filter((x) => x.toLowerCase().includes(searchText.toLowerCase()))
+
+
+function populateDropdown(results) {
+    if (!results.length) {
+        return ingredientListResults.classList.remove("show"); 
+    } 
+    let content = results.map((ingredient) => {
+    return `<li>${ingredient}</li>`}).join("");
+
+    ingredientListResults.innerHTML = `<ul>${content}</ul>`;
+    console.log(ingredientListResults)
+    console.log(content)
+    console.log(results);
+    ingredientListResults.classList.add("show");
+   
+
 }
 
-ingredientInput.addEventListener("submit", () => {
-    const filteredArray = filterIngredients(ingredientsArray, ingredientInput.value);
-    populateDropdown(filterIngredients);
 
-});
+
+// function populateDropdown(results) {
+//     if (!results.length) {
+//         return dropDown.classList.remove("show"); 
+//     } 
+//     const newUl = document.createElement("ul");
+//     results.forEach((ingredient) => {
+//         const newLi = document.createElement("li");
+//         newLi.textContent = ingredient;
+//         newUl.append(newLi);
+//     });
+//     console.log(results);
+//     dropDown.classList.add('show');
+
+
+
+
+
 
 
 

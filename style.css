@@ -149,6 +149,7 @@ a:hover {
     background-color: grey;
     max-height: 100px;
     overflow-y: scroll;
+
 }
 
 #add-ingredient::placeholder {
@@ -156,12 +157,32 @@ a:hover {
     font-family: "Oswald", sans-serif;
 }
 
-#autocomplete-list li {
-    padding: 10px;
-    cursor: pointer;
+#autocomplete-list ul {
+    margin: 0; 
+    padding: 0;
 }
 
+#autocomplete-list ul li {
+    /* padding: 10px;
+    cursor: pointer;
+    list-style: none;
+    border-radius: 3px;
+    opacity: 0;
+    display: none;
+    padding: 8px 12px;
+     */
+    padding: 1px;
+    cursor: pointer;
+    list-style: none;
+    transition: all .5s linear;
+    text-align: center;
+    
+}
 
+.show ul li {
+    opacity: 1;
+    display: block;
+}
 
 body {
     background: rgb(36, 36, 36);
@@ -177,3 +198,4 @@ body {
 /* body::-webkit-scrollbar{
 
 } */
+
