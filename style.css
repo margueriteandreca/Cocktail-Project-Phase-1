@@ -199,3 +199,47 @@ body {
 
 } */
 
+#ingredients-buttons {
+    display: flex;
+    margin-top: 20px;
+
+}
+
+
+.ingredient-tags {
+    background-color: grey;
+    font-size: smaller;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 7px;
+    border-radius: 30px;
+    margin: 5px;
+    border: 1px solid #959595;
+
+}
+
+.ingredient-tags:hover {
+    background-color: rgb(52, 52, 52);
+    cursor: pointer;
+
+}
+
+.remove-tag {
+    color: inherit;
+    background-color: inherit;
+    border-style: none;
+    
+}
+
+.remove-tag:hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+#mix {
+    font-family: "Oswald", sans-serif;
+    color: whitesmoke;
+    border: 1px solid #959595;
+    border-radius: 40px;
+
+}

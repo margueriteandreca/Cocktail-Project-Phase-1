@@ -6,9 +6,10 @@ fetch("http://localhost:3000/ingredients")
     createDropDownIngredients(ingredientsArray)
 });
 
-const dropDown = document.getElementById("edit-drink-dropdown");
+const dropDown = document.getElementById("edit-drink-dropdown"); //entire submit form
 const ingredientListResults = document.getElementById("autocomplete-list");
 const ingredientInput = document.getElementById("add-ingredient");
+const buttonsDiv = document.getElementById("ingredients-buttons");
 
 
 function createDropDownIngredients(ingredientsArray) {
@@ -36,19 +37,40 @@ function populateDropdown(results) {
     return `<li>${ingredient}</li>`}).join("");
 
     ingredientListResults.innerHTML = `<ul>${content}</ul>`;
+    // ingredientForButton = `${content}`
     console.log(ingredientListResults)
     console.log(content)
     console.log(results);
     ingredientListResults.classList.add("show");
-   
 
-}
+    
+};
+
+ingredientListResults.addEventListener("click", (e) => {
+    console.log(e.target.textContent);
+    const ingredientTag = document.createElement("span");
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "x"
+    removeButton.className = "remove-tag"
+    removeButton.addEventListener("click", () => {
+        removeButton.parentNode.remove();
+    });
+    ingredientTag.textContent = e.target.textContent.toLowerCase();
+    ingredientTag.className = "ingredient-tags"
+    ingredientTag.append(removeButton);
+    buttonsDiv.append(ingredientTag);
+
+})
+
+dropDown.addEventListener("submit", (e) => {
+    
+})
 
 
 
 // function populateDropdown(results) {
 //     if (!results.length) {
-//         return dropDown.classList.remove("show"); 
+//         return ingredientListResults.classList.remove("show"); 
 //     } 
 //     const newUl = document.createElement("ul");
 //     results.forEach((ingredient) => {
