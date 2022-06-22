@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>American Cocktails</title>
-        <link rel="stylesheet" href="/style.css" id="css-file"/>
+        <link rel="stylesheet" href="style.css" id="css-file"/>
         <script defer src="./index.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com"> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
@@ -39,7 +39,10 @@
         <div id="display-classic-drink">
             <div id="">
                 <h2 id="details-title">EXAMPLE</h2>
-                <img src="https://m.media-amazon.com/images/I/713XPPpQ8QS._AC_SX679_.jpg" alt="test-pic" height="400px" width="400px">
+                <img id ="display-image"src="https://m.media-amazon.com/images/I/713XPPpQ8QS._AC_SX679_.jpg" alt="test-pic" height="400px" width="400px">
+                <ul id = "ingredients-list">
+
+                </ul>
             </div>
                 
             
@@ -68,26 +71,21 @@
             </div>
         </div>
 
-        <!-- <div id="create-drink-div">
-            <form id="create-drink-form">
-                <label for="liquor">Liquor:</label><br>
-                <input type="text" id="liquor" name="liquor"><br>
-                
-                <label for="mixer-1">Mixer 1:</label><br>
-                <input type="text" id="mixer-1" name="mixer-1"><br>
-                
-                <label for="mixer-2">Mixer 2:</label><br>
-                <input type="text" id="mixer-2" name="mixer-2"><br>
+        <div id="filter-drink-div">
+            <form id="filter-drink-form">
+                <input type="button"id="ingridientsFilter"value="Ingredients">
+                <input type="button"id="catFilter"value="Category">
+                <input type="button"id="alchFilter"value="Alchohol">
+                <input type="button"id="glassFilter"value="Glass">
 
-                <label for="lname"></label><br>
+
                 <input type="submit" id="lname" name="lname" value="Let's mix!">
               </form>
-        </div> -->
+        </div> 
 
 </div>
 
 </div>
-
 
 
 
