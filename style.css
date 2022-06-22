@@ -87,6 +87,11 @@ p {
 
 }
 
+#drink-details img {
+    width: 400px;
+    height: 400px;
+}
+
 #detail-div {
     display: flex;
     justify-content: space-between;

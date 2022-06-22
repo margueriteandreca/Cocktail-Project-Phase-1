@@ -65,7 +65,7 @@ const ingredientsList = document.getElementById("ingredients-list")
 //     name:, 
 //     ingredients:,
 //     glass:,
-//     alchohol:,
+//     alcohol:,
 
 
 // // }
@@ -103,8 +103,12 @@ const ingredientsList = document.getElementById("ingredients-list")
 //     }
 // })
 for (let i =11000; i < 11010;i++) {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${i}`).then(resp=>resp.json())
-    .then(menuDrinks)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${i}`)
+    .then(resp=>resp.json())
+    .then(data => {
+        menuDrinks(data);
+
+    })
 }
 
 function menuDrinks(data) {

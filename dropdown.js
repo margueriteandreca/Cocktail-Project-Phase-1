@@ -1,14 +1,12 @@
 
-
-// menuImage.addEventListener("click", () => {
-
+//drop down menu that autocompletes ingredient typed into input 
 
 // })
 //need to get array of ingredients 
-fetch("https://localhost.3000/")
+fetch("https://localhost.3000/ingredients")
 .then(res => res.json())
 .then(ingredientsArray => {
-    populateDropdown(ingredientsArray, )
+    populateDropdown(ingredientsArray);
 
 });
 
@@ -35,7 +33,7 @@ ingredientInput.addEventListener("submit", () => {
     const filteredArray = filterIngredients(ingredientsArray, ingredientInput.value);
     populateDropdown(filterIngredients);
 
-})
+});
 
 
 

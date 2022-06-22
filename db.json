@@ -1,6 +1,37 @@
 {
   "drinks": [
-
+    {
+      "id": "11007",
+      "name": "Margarita",
+      "ingredients": ["tequila", "lime juice", "triple sec", "salt"],
+      "glass": "Cocktail glass",
+      "alcohol": "tequila",
+      "image": "https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg"
+    },
+    {
+      "id": "17255",
+      "name": "Gimlet",
+      "ingredients": ["gin", "lime juice", "sugar syrup", "lime"],
+      "glass": "Martini glass",
+      "alcohol": "gin",
+      "image": "https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg"
+    },
+    {
+      "id": "11728",
+      "name": "Martini",
+      "ingredients": ["gin", "dry vermouth", "olive"],
+      "glass": "Martini glass",
+      "alcohol": "gin",
+      "image": "https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg"
+    },
+    {
+      "id": "11001",
+      "name": "Old Fashioned",
+      "ingredients": ["bourbon", "angostura bitters", "sugar", "water"],
+      "glass": "Old fashioned glass",
+      "alcohol": "bourbon",
+      "image": "https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg"
+    }
   ],
   "category": [
     {
