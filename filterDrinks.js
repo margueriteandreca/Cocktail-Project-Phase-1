@@ -12,6 +12,8 @@ const toggleShow = document.getElementById("filter-button")
 const ingredientValue = {}
 
 let isToggleShow = false
+filterDrinkNode.style.display = "none"
+
 toggleShow.addEventListener("click",()=>{
     console.log("click")
     if (isToggleShow === true) {
