@@ -88,12 +88,13 @@ function displayMatchDrink(data){
     const drinkData = data.drinks[0]
     for (let i = 0;i < filterImgNode.length;i++) {
         if (!filterImgNode[i].src) {
+            const parentEle = filterImgNode[i].parentElement
             filterImgNode[i].src = drinkData.strDrinkThumb
-            filterImgNode[i].parentElement.querySelector("h1").textContent = drinkData.strDrink 
-            
+            parentEle.querySelector("h1").textContent = drinkData.strDrink 
+            console.log(parentEle)
             for (let property in drinkData) {
                 if (drinkData[property] && regex.test(property)) {
-                    displayIngridients(drinkData[property])
+                    displayIngridients(drinkData[property],parentEle.querySelector(".filter-ingridients"))
                 }
             }
             
@@ -101,8 +102,13 @@ function displayMatchDrink(data){
         }
     }
 }
-function displayIngridients(ingredient) {
-    
+function displayIngridients(ingredient,node) {
+    console.log(node)
+    const ingNode = document.createElement("span")
+    ingNode.textContent = ingredient
+    ingNode.classList.add("ingredient-tags")
+    node.append(ingNode)
+
 }
 const amountOccur = {}
 
