@@ -146,6 +146,7 @@ a:hover {
     background-color: grey;
     max-height: 100px;
     overflow-y: scroll;
+
 }
 
 #add-ingredient::placeholder {
@@ -153,12 +154,32 @@ a:hover {
     font-family: "Oswald", sans-serif;
 }
 
-#autocomplete-list li {
-    padding: 10px;
-    cursor: pointer;
+#autocomplete-list ul {
+    margin: 0; 
+    padding: 0;
 }
 
+#autocomplete-list ul li {
+    /* padding: 10px;
+    cursor: pointer;
+    list-style: none;
+    border-radius: 3px;
+    opacity: 0;
+    display: none;
+    padding: 8px 12px;
+     */
+    padding: 1px;
+    cursor: pointer;
+    list-style: none;
+    transition: all .5s linear;
+    text-align: center;
+    
+}
 
+.show ul li {
+    opacity: 1;
+    display: block;
+}
 
 body {
     background: rgb(36, 36, 36);
@@ -217,3 +238,48 @@ body {
 /* body::-webkit-scrollbar{
 
 } */
+
+#ingredients-buttons {
+    display: flex;
+    margin-top: 20px;
+
+}
+
+
+.ingredient-tags {
+    background-color: grey;
+    font-size: smaller;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 7px;
+    border-radius: 30px;
+    margin: 5px;
+    border: 1px solid #959595;
+
+}
+
+.ingredient-tags:hover {
+    background-color: rgb(52, 52, 52);
+    cursor: pointer;
+
+}
+
+.remove-tag {
+    color: inherit;
+    background-color: inherit;
+    border-style: none;
+    
+}
+
+.remove-tag:hover {
+    color: blueviolet;
+    cursor: pointer;
+}
+
+#mix {
+    font-family: "Oswald", sans-serif;
+    color: whitesmoke;
+    border: 1px solid #959595;
+    border-radius: 40px;
+
+}

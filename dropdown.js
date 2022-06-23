@@ -1,39 +1,90 @@
 
-//drop down menu that autocompletes ingredient typed into input 
-
-// })
-//need to get array of ingredients 
-fetch("https://localhost.3000/ingredients")
+fetch("http://localhost:3000/ingredients")
 .then(res => res.json())
 .then(ingredientsArray => {
-    populateDropdown(ingredientsArray);
-
+    // populateDropdown(ingredientsArray);
+    createDropDownIngredients(ingredientsArray)
 });
 
-const ingredientList = document.getElementById("autocomplete-list");
+const dropDown = document.getElementById("edit-drink-dropdown"); //entire submit form
+const ingredientListResults = document.getElementById("autocomplete-list");
 const ingredientInput = document.getElementById("add-ingredient");
+const buttonsDiv = document.getElementById("ingredients-buttons");
 
 
-function populateDropdown(data) {
-    if (data) {
-    const addedIngredient = document.createElement("li");
-    addedIngredient.textContent = ""
-    data.forEach(ingredient => {
-        addedIngredient.textContent = ingredient.strIngredient1;
-        ingredientList.append(addedIngredient);
-})
-    }
+function createDropDownIngredients(ingredientsArray) {
+    // console.log(ingredientsArray)
+    ingredientInput.addEventListener("keyup", (e) => {
+        console.log(e.target.value);
+        let results = [];
+        let input = ingredientInput.value;
+        if (input.length) {
+            results = ingredientsArray.filter((ingredient) => {
+            return ingredient.toLowerCase().includes(input.toLowerCase())
+        });
+        }
+        populateDropdown(results);
+    });
+    };
+
+
+
+function populateDropdown(results) {
+    if (!results.length) {
+        return ingredientListResults.classList.remove("show"); 
+    } 
+    let content = results.map((ingredient) => {
+    return `<li>${ingredient}</li>`}).join("");
+
+    ingredientListResults.innerHTML = `<ul>${content}</ul>`;
+    // ingredientForButton = `${content}`
+    console.log(ingredientListResults)
+    console.log(content)
+    console.log(results);
+    ingredientListResults.classList.add("show");
+
+    
 };
 
-function filterIngredients (ingredientsArray, searchText) {
-    ingredientsArray.filter((x) => x.toLowerCase().includes(searchText.toLowerCase()))
-}
+ingredientListResults.addEventListener("click", (e) => {
+    console.log(e.target.textContent);
+    const ingredientTag = document.createElement("span");
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "x"
+    removeButton.className = "remove-tag"
+    removeButton.addEventListener("click", () => {
+        removeButton.parentNode.remove();
+    });
+    ingredientTag.textContent = e.target.textContent.toLowerCase();
+    ingredientTag.className = "ingredient-tags"
+    ingredientTag.append(removeButton);
+    buttonsDiv.append(ingredientTag);
 
-ingredientInput.addEventListener("submit", () => {
-    const filteredArray = filterIngredients(ingredientsArray, ingredientInput.value);
-    populateDropdown(filterIngredients);
+})
 
-});
+dropDown.addEventListener("submit", (e) => {
+    
+})
+
+
+
+// function populateDropdown(results) {
+//     if (!results.length) {
+//         return ingredientListResults.classList.remove("show"); 
+//     } 
+//     const newUl = document.createElement("ul");
+//     results.forEach((ingredient) => {
+//         const newLi = document.createElement("li");
+//         newLi.textContent = ingredient;
+//         newUl.append(newLi);
+//     });
+//     console.log(results);
+//     dropDown.classList.add('show');
+
+
+
+
+
 
 
 
