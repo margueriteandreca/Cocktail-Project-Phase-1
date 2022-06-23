@@ -7,69 +7,14 @@ const drinkByName = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
 const ingredientByName = 'www.thecocktaildb.com/api/json/v1/1/search.php?i='
 const drinkDetails = 'www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
 const drinkByCategory = 'www.thecocktaildb.com/api/json/v1/1/filter.php?c='
-const filter = 'www.thecocktaildb.com/api/json/v1/1/filter.php?'
-//headers for all fetches
-const filterDrinkNode = document.getElementById("filter-drink-form")
-const ingFilter = document.getElementById("ingridientsFilter")
-const catFilter = document.getElementById("catFilter")
-const alchFilter = document.getElementById("alchFilter")
-const glassFilter = document.getElementById("glassFilter")
-const filterDrinkFormInputs = filterDrinkNode.querySelectorAll("input[type=button]")
+
 
 const displayImage = document.getElementById("display-image")
 const displayTitle = document.getElementById("details-title")
 const ingredientsList = document.getElementById("ingredients-list")
 // const header = '{Content-Type: application/json}'
 
-
-// filterDrinkNode.addEventListener("submit",e=>{
-
-//     const filteredInputs = filterDrinkFormInputs.filter(item=> item.value!==null)
-
-//     let newFilter = `www.thecocktaildb.com/api/json/v1/1/filter.php?${filteredInputs[0]}`
-
-//     filteredInputs.forEach(item => {
-//         newFilter+= item.name
-//     });
-
-//     fetch("newFilter").then(resp=>resp.json())
-//     .then(menuDrinks)
-// })
-
-
-// ingFilter.addEventListener("click",e=>{
-//     ingFilter.value = populateDropdown()
-//     ingFilter.name = `i=${ingFilter.value}`
-    
-// })
-// catFilter.addEventListener("click",e=>{
-//     catFilter.value =  populateDropdown()
-//     ingFilter.name = `c=${ingFilter.value}`
-   
-// })
-
-// alchFilter.addEventListener("click",e=>{
-//     alchFilter.value = populateDropdown()
-//     ingFilter.name = `a=${ingFilter.value}`
-
-// })
-
-// glassFilter.addEventListener("click",e=>{
-//     glassFilter.value = populateDropdown()
-//     ingFilter.name = `g=${ingFilter.value}`
-
-// })
-
-
-// const drinkObj = {
-//     name:, 
-//     ingredients:,
-//     glass:,
-//     alcohol:,
-
-
-// // }
-// //Filters can be added on top of each other
+//Filters can be added on top of each other
 // drinkForm.addEventListener("submit",(e)=>{
 //     e.preventDefault()
 //     fetch(drinkByName+drink.value).then(resp=>resp.json())
@@ -102,45 +47,50 @@ const ingredientsList = document.getElementById("ingredients-list")
 //         }
 //     }
 // })
-for (let i =11000; i < 11010;i++) {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${i}`)
-    .then(resp=>resp.json())
-    .then(data => {
-        menuDrinks(data);
+// for (let i =11000; i < 11010;i++) {
+//     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${i}`)
+//     .then(resp=>resp.json())
+//     .then(data => {
+//         menuDrinks(data);
 
-    })
-}
+//     })
+// }
 
-function menuDrinks(data) {
-    const filterData = data.drinks[0]
-    //const newDrink = document.createElement("h2")
-    const drinkImg = document.createElement("img")
-    drinkImg.src = filterData.strDrinkThumb
-    //newDrink.textContent = data.strDrink
+// function menuDrinks(data) {
+//     const filterData = data.drinks[0]
+//     //const newDrink = document.createElement("h2")
+//     const drinkImg = document.createElement("img")
+//     drinkImg.src = filterData.strDrinkThumb
+//     //newDrink.textContent = data.strDrink
 
 
-    menu.append(drinkImg)
+//     menu.append(drinkImg)
 
-    drinkImg.addEventListener("click",(e)=>{    
+//     drinkImg.addEventListener("click",(e)=>{    
 
-        console.log("clicked")
-        displayImage.src = drinkImg.src
-        displayTitle.textContent = filterData.strDrink
+//         console.log("clicked")
+//         displayImage.src = drinkImg.src
+//         displayTitle.textContent = filterData.strDrink
 
-        ingredientsList.querySelectorAll("li").forEach(ele=>{
-            ele.remove()
-        })
-        for (i=1;i <= 15;i++) {
-            if (filterData[`strIngredient${i}`]) {
-                const ingredient = document.createElement("li")
-                ingredient.textContent = filterData[`strIngredient${i}`] 
-                ingredientsList.append(ingredient)
-            }
+//         ingredientsList.querySelectorAll("li").forEach(ele=>{
+//             ele.remove()
+//         })
+//         for (i=1;i <= 15;i++) {
+//             if (filterData[`strIngredient${i}`]) {
+//                 const ingredient = document.createElement("li")
+//                 ingredient.textContent = filterData[`strIngredient${i}`] 
+//                 ingredientsList.append(ingredient)
+
+//                 ingredient.addEventListener("click",e=>{
+//                     populateDropdown()
+//                 })
+//             }
     
-        }
+//         }
 
-   })
-}
+//    })
+// }
+
 // function dropdown(click) {
 //     //Make dropdownVisible
 //     //Filter through ingredients database

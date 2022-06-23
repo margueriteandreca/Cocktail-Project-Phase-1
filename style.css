@@ -71,9 +71,6 @@ p {
     filter: drop-shadow(0 0 0.5rem whitesmoke);
 }
 
-
-
-
 #drink-details {
     display: flex;
     position: relative;
@@ -173,6 +170,49 @@ body {
     list-style: none;
 
 }
+
+.circle-drink {
+    border-radius: 40%;
+} 
+
+#filter-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 15%;
+    width: 15%;
+    border-radius: 20px;
+}
+
+.highlight-img-style {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+#filter-drink-form img {
+    margin: 10px;
+}
+#filter-drink-div {
+    position: absolute;
+    left: 20%;
+    top:20%;
+}
+#filter-drink-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 14%;
+    background-color: white;
+    justify-content: center;
+}
+#filter-drink-form h1 {
+    display: block;
+    text-align: center;
+}
+#mixer-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}   
 
 /* body::-webkit-scrollbar{
 
