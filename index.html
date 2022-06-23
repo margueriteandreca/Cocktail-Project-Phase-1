@@ -73,26 +73,43 @@
             <button id = "filter-button"type="button">Click Me!</button>
          </div>
 
-            <div id="filter-drink-div">
+        <div id="filter-drink-div">  
             <form id="filter-drink-form">
-                <div class = "img-container liquor"><img id="vodka-img"class="img-container"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                <div class = "img-container liquor"><img id="gin-img"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                <div class = "img-container liquor"><img id="scotch-img"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                <div class = "img-container liquor"><img id="tequila-img"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
+                <h1>Alchohol</h1>              
+
+                <div class = "img-container liquor"><img id="vodka"class="img-container"src="https://www.thecocktaildb.com/images/ingredients/vodka-Medium.png" height="150" width="200"></div>
+                <div class = "img-container liquor"><img id="gin"src="https://www.thecocktaildb.com/images/ingredients/gin-Medium.png" height="150" width="200"></div>
+                <div class = "img-container liquor"><img id="scotch"src="https://www.thecocktaildb.com/images/ingredients/scotch-Medium.png" height="150" width="200"></div>
+                <div class = "img-container liquor"><img id="tequila"src="https://www.thecocktaildb.com/images/ingredients/tequila-Medium.png" height="150" width="200"></div>
               
                 <div id="mixer-container">
-                    <div class = "img-container"><img id="lime"class = "circle-drink "class="img-container"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                    <div class = "img-container"><img id="sugar"class = "circle-drink"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                    <div class = "img-container"><img id="watermelon"class = "circle-drink"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                    <div class = "img-container"><img id="sherry"class = "circle-drink"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                    <div class = "img-container"><img id="lemon"class = "circle-drink"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                    <div class = "img-container"><img id="milk"class = "circle-drink"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                    <div class = "img-container"><img id="apple"class = "circle-drink"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
-                    <div class = "img-container"> <img id="orange"class = "circle-drink"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
+                    <h1>Mixer</h1>              
+                    <div class = "img-container circle-drink"><img id="lime"title="lime"class="img-container"src="https://www.thecocktaildb.com/images/ingredients/lime-Medium.png" height="150" width="150"></div>
+                    <div class = "img-container circle-drink"><img id="sugar"title="sugar"src="https://www.thecocktaildb.com/images/ingredients/sugar-Medium.png" height="150" width="150"></div>
+                    <div class = "img-container circle-drink"><img id="watermelon"title="watermelon"src="https://www.thecocktaildb.com/images/ingredients/watermelon-Medium.png" height="150" width="150"></div>
+                    <div class = "img-container circle-drink"><img id="sherry"title="sherry"src="https://www.thecocktaildb.com/images/ingredients/sherry-Medium.png" height="150" width="150"></div>
+                    <div class = "img-container circle-drink"><img id="lemon"title="lemon"src="https://www.thecocktaildb.com/images/ingredients/lemon-Medium.png" height="150" width="150"></div>
+                    <div class = "img-container circle-drink"><img id="milk"title="milk"src="https://www.thecocktaildb.com/images/ingredients/milk-Medium.png" height="150" width="150"></div>
+                    <div class = "img-container circle-drink"><img id="apple"title="apple"src="https://www.thecocktaildb.com/images/ingredients/apple-Medium.png" height="150" width="150"></div>
+                    <div class = "img-container circle-drink"> <img id="orange"title="orange"src="https://www.thecocktaildb.com/images/ingredients/orange-Medium.png" height="150" width="150"></div>
                 </div>
-                <input type="submit" id="lname" name="lname" value="Let's mix!">
+                <input id ="filter-submit" type="submit" id="lname" name="lname" value="Let's mix!">
               </form>
         </div>  
+
+        <div id = "filter-drink-display">
+            <h2 class = "close">X</h2>
+            <h1>Your drink is... </h1>
+            <div id ="most-matched-drink">
+                
+                <div class="img-container left"><h1>e</h1><img id ="most-matched-drink-img" height="350px" width="350px"></div>
+            </div>
+            
+            <div id = "other-matched-drinks">
+                <div class="img-container left"><h1>e</h1><img height="250px" width="250px"></div>
+                <div class="img-container left"><h1>e</h1><img height="250px" width="250px"></div>
+            </div>
+        </div>
 
 </div>
 

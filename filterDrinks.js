@@ -1,21 +1,23 @@
 // const filter = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?'
 // //headers for all fetches
 const filterDrinkNode = document.getElementById("filter-drink-form")
-const ingredientsNode = document.querySelectorAll(".circle-drink")
+const ingredientsNode = document.querySelectorAll(".circle-drink img")
 const toggleShow = document.getElementById("filter-button")
-// const ingFilter = document.getElementById("ingridientsFilter")
-// const catFilter = document.getElementById("catFilter")
-// const alchFilter = document.getElementById("alchFilter")
-// const glassFilter = document.getElementById("glassFilter")
-// const filterDrinkFormInputs = filterDrinkNode.querySelectorAll("input[type=button]")
+const filterDrinkDisplayNode = document.getElementById("filter-drink-display")
+const allImg = document.querySelectorAll("#filter-drink-display img")
+const mostMatchedDrinkNode = document.getElementById("most-matched-drink-img")
+const filterImgNode = filterDrinkDisplayNode.querySelectorAll("img")
+const alchNodes = filterDrinkNode.querySelectorAll(".liquor img")
+const closeDisplay = filterDrinkDisplayNode.querySelector(".close")
 
 const ingredientValue = {}
+const liquorValue = {}
 
 let isToggleShow = false
 filterDrinkNode.style.display = "none"
+filterDrinkDisplayNode.style.display = "none"
 
 toggleShow.addEventListener("click",()=>{
-    console.log("click")
     if (isToggleShow === true) {
         filterDrinkNode.style.display = "none"
         isToggleShow = false
@@ -26,94 +28,44 @@ toggleShow.addEventListener("click",()=>{
     }
 })
 
-ingredientsNode.forEach(item=> {
-
-    ingredientValue[item.id] = false
-    item.addEventListener("click",()=>{
-        console.log(ingredientValue)
-       ingredientValue[item.id] =  !ingredientValue[item.id]
+closeDisplay.addEventListener("click",()=>{
+    allImg.forEach(img=> {
+        img.removeAttribute("src")
     })
+    filterDrinkDisplayNode.style.display = "none"
 
 })
 
-const clickState = {
-    vodkaClick:false,
-    ginClick:false,
-    scotchClick:false,
-    tequilaClick:false
+addClickToggle(ingredientValue,ingredientsNode)
+addClickToggle(liquorValue,alchNodes)
+
+function addClickToggle(obj,node) {
+    node.forEach(item=> {
+        obj[item.id] = false
+        item.addEventListener("click",()=>{
+           obj[item.id] = !obj[item.id]
+           item.parentElement.classList.toggle("background-color-class")
+        })
+    
+    })
 }
-
-const vodkaNode = document.getElementById("vodka-img")
-const ginNode = document.getElementById("gin-img")
-const scotchNode = document.getElementById("scotch-img")
-const tequilaNode = document.getElementById("tequila-img")
-
-
-
-vodkaNode.addEventListener("click",()=>{
-    clickState.ginClick = false
-    clickState.scotchClick = false
-    clickState.tequilaClick = false
-    if (clickState.vodkaClick == false) {
-        clickState.vodkaClick = true
-    }
-    else {
-        clickState.vodkaClick = false
-    }
-    console.log(clickState.vodkaClick)
-})
-
-ginNode.addEventListener("click",()=>{
-    clickState.vodkaClick = false
-    clickState.scotchClick = false
-    clickState.tequilaClick = false
-    if (clickState.ginClick == false) {
-        clickState.ginClick = true
-    }
-    else {
-        clickState.ginClick = false
-    }
-
-})
-
-scotchNode.addEventListener("click",()=>{
-    clickState.ginClick = false
-    clickState.vodkaClick = false
-    clickState.tequilaClick = false
-    if (clickState.scotchClick == false) {
-        clickState.scotchClick = true
-    }
-    else {
-        clickState.scotchClick = false
-    }
-
-})
-
-tequilaNode.addEventListener("click",()=>{
-    clickState.ginClick = false
-    clickState.scotchClick = false
-    clickState.vodkaClick = false
-    if (clickState.tequilaClick == false) {
-        clickState.tequilaClick = true
-    }
-    else {
-        clickState.tequilaClick = false
-    }
-})
 
 filterDrinkNode.addEventListener("submit",(e)=> {
     e.preventDefault()
     const endUrl = []
-    for (let click in clickState) {
-        if (clickState[click]) {
-            const targetUrl = click.replace('Click',"")
-            console.log(targetUrl)
-            endUrl.push(targetUrl)
+    filterDrinkNode.style.display = "none"
+    filterDrinkDisplayNode.style.display = "block"
+    isToggleShow = false
+    
+   for (let state in liquorValue) {
+    if (liquorValue[state]) {
+        endUrl.push(state)
         }
     }
-    for (let click in ingredientValue) {
-        if (ingredientValue[click]) {
-            endUrl.push(click)
+   
+    for (let state in ingredientValue) {
+        if (ingredientValue[state]) {
+            endUrl.push(state)
         }
     }
     
@@ -130,8 +82,22 @@ function fetchMatchDrinks(endUrl) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${endUrl}`).then(resp=>resp.json())
     .then(displayMatchDrink)
 }
+
 function displayMatchDrink(drinkData){
-    console.log(drinkData)
+        console.log(drinkData.drinks[0])
+        if (!filterImgNode[0].src) {
+            filterImgNode[0].src = drinkData.drinks[0].strDrinkThumb
+            filterImgNode[0].parentElement.querySelector("h1").textContent = drinkData.drinks[0].strDrink 
+        }
+        else if (!filterImgNode[1].src) {
+            filterImgNode[1].src = drinkData.drinks[0].strDrinkThumb
+            filterImgNode[1].parentElement.querySelector("h1").textContent = drinkData.drinks[0].strDrink 
+
+        }
+        else if (!filterImgNode[2].src) {
+            filterImgNode[2].src = drinkData.drinks[0].strDrinkThumb
+            filterImgNode[2].parentElement.querySelector("h1").textContent = drinkData.drinks[0].strDrink 
+        }
 }
 
 const amountOccur = {}
@@ -142,15 +108,13 @@ function comparePossibleDrinks(drinksByIngredient) {
         else amountOccur[drink.idDrink] = 0
     })
     const recArray = {}
-
     for (let id in amountOccur) {
         if (Object.keys(recArray).length < 3 ){
             recArray[id] = amountOccur[id]
         }
         for (let large in recArray) {
-            console.log("ran")
             if (amountOccur[id] > recArray[large]) {
-                delete large
+                delete recArray[large]
                 recArray[id] = amountOccur[id]
             }
         }
@@ -160,26 +124,11 @@ function comparePossibleDrinks(drinksByIngredient) {
 }
 
 function displayRec(recArray) {
-    console.log(recArray)
     Object.keys(recArray).forEach(key=> {
         fetchMatchDrinks(key)
     })
 
 }
-// filterDrinkNode.addEventListener("submit",e=>{
-//     console.log(Array.from(filterDrinkFormInputs))
-//     e.preventDefault()
-//     const filteredInputs = Array.from(filterDrinkFormInputs).filter(item=> item.value!==null)
-
-//     let newFilter = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${filteredInputs[0]}`
-
-//     filteredInputs.forEach(item => {
-//         newFilter+= item.name
-//     });
-
-//     fetch("newFilter").then(resp=>resp.json())
-//     .then(filterDrinks)
-// })
 
 
 
