@@ -119,6 +119,8 @@ ingredientListResults.addEventListener("click", (e) => {
 
 // })
 //TO DO - SUBMIT INGREDIENT TAGS, POST TO JSON 
+// add X's to default ingredients 
+//fix wacky ass dropdown
 
 
 

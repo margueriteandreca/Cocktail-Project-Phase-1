@@ -6,10 +6,7 @@ fetch("http://localhost:3000/ingredients")
     createDropDownIngredients(ingredientsArray)
 });
 
-const dropDown = document.getElementById("edit-drink-dropdown"); //entire submit form
-const ingredientListResults = document.getElementById("autocomplete-list");
-const ingredientInput = document.getElementById("add-ingredient");
-const buttonsDiv = document.getElementById("ingredients-buttons");
+
 
 
 function createDropDownIngredients(ingredientsArray) {
@@ -63,7 +60,7 @@ ingredientListResults.addEventListener("click", (e) => {
 })
 
 dropDown.addEventListener("submit", (e) => {
-    
+
 })
 
 
