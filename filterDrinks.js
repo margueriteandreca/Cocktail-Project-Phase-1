@@ -10,6 +10,7 @@ const filterImgNode = filterDrinkDisplayNode.querySelectorAll("img")
 const alchNodes = filterDrinkNode.querySelectorAll(".liquor img")
 const closeDisplay = filterDrinkDisplayNode.querySelector(".close")
 
+const regex = new RegExp("strIngredient","g")
 const ingredientValue = {}
 const liquorValue = {}
 
@@ -83,23 +84,26 @@ function fetchMatchDrinks(endUrl) {
     .then(displayMatchDrink)
 }
 
-function displayMatchDrink(drinkData){
-        console.log(drinkData.drinks[0])
-        if (!filterImgNode[0].src) {
-            filterImgNode[0].src = drinkData.drinks[0].strDrinkThumb
-            filterImgNode[0].parentElement.querySelector("h1").textContent = drinkData.drinks[0].strDrink 
+function displayMatchDrink(data){
+    const drinkData = data.drinks[0]
+    for (let i = 0;i < filterImgNode.length;i++) {
+        if (!filterImgNode[i].src) {
+            filterImgNode[i].src = drinkData.strDrinkThumb
+            filterImgNode[i].parentElement.querySelector("h1").textContent = drinkData.strDrink 
+            
+            for (let property in drinkData) {
+                if (drinkData[property] && regex.test(property)) {
+                    displayIngridients(drinkData[property])
+                }
+            }
+            
+            break;
         }
-        else if (!filterImgNode[1].src) {
-            filterImgNode[1].src = drinkData.drinks[0].strDrinkThumb
-            filterImgNode[1].parentElement.querySelector("h1").textContent = drinkData.drinks[0].strDrink 
-
-        }
-        else if (!filterImgNode[2].src) {
-            filterImgNode[2].src = drinkData.drinks[0].strDrinkThumb
-            filterImgNode[2].parentElement.querySelector("h1").textContent = drinkData.drinks[0].strDrink 
-        }
+    }
 }
-
+function displayIngridients(ingredient) {
+    
+}
 const amountOccur = {}
 
 function comparePossibleDrinks(drinksByIngredient) {
