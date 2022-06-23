@@ -11,18 +11,24 @@
 
 #drink-menu {
     display: flex;
-    padding-top: 300px;
+    padding-top: 350px;
     /* padding-left: 20px;
     padding-right: 20px; */
-    width: 300px;
-    height: 100vh;
+    min-width: 300px;
+    /* height: 100vh; */
     background-color: rgb(67, 67, 75);
     justify-content: center;
     flex-direction: column;
-    position: fixed;
     top: 0;
     bottom: 0; 
     overflow-y: scroll;
+
+}
+
+#details-body {
+    width: auto;
+    
+
 
 }
 
@@ -31,6 +37,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 
 #menu-title {
     display: flex;
@@ -51,7 +58,9 @@ p {
     display: list-item;
     font-size: 30px;
     letter-spacing: 4px;
-    padding: 15px;
+    /* padding: none;
+    margin: none; */
+    /* padding: 15px; */
 
 }
 
@@ -71,16 +80,17 @@ p {
     filter: drop-shadow(0 0 0.5rem whitesmoke);
 }
 
+/* #background-div {
+    background-color: greenyellow;
+} */
+
 #drink-details {
     display: flex;
     position: relative;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    margin-left: auto;
-    margin-right: auto; 
-    width: 80vw;
+    justify-content: center;
     align-items: center;
+    width: 80vw;
 
 }
 
@@ -89,15 +99,27 @@ p {
     height: 400px;
 }
 
+#details-body {
+    display: flex;
+    justify-content: center;
+}
 #detail-div {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    
+    width: 70%;
 }
 
 #display-classic-drink {
-    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    
+    
+    
+
 }
 
 #create-drink-div {
@@ -119,7 +141,15 @@ a:hover {
     text-decoration: underline;
 }
 
+
+/* #edit-drink-dropdown {
+    background-color: aqua;
+      
+} */
+
 #edit-drink-div {
+    /* background-color: blue; */
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -141,6 +171,7 @@ a:hover {
     color: whitesmoke;
     list-style-type: none;
     width: 100%;
+    max-width: 300px;
     margin: 0;
     padding: 0;
     background-color: grey;
@@ -149,15 +180,18 @@ a:hover {
 
 }
 
+#autocomplete-list ul {
+    margin: 0; 
+    padding: 0;
+    
+}
+
 #add-ingredient::placeholder {
     color: whitesmoke;
     font-family: "Oswald", sans-serif;
 }
 
-#autocomplete-list ul {
-    margin: 0; 
-    padding: 0;
-}
+
 
 #autocomplete-list ul li {
     /* padding: 10px;
@@ -173,6 +207,7 @@ a:hover {
     list-style: none;
     transition: all .5s linear;
     text-align: center;
+
     
 }
 
@@ -239,12 +274,14 @@ body {
 
 } */
 
+
 #ingredients-buttons {
     display: flex;
+    flex-direction: row;
     margin-top: 20px;
+    max-width: 500px;
 
 }
-
 
 .ingredient-tags {
     background-color: grey;

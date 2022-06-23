@@ -5,7 +5,6 @@
         <link rel="stylesheet" href="style.css" id="css-file"/>
         <script defer src="./menutodetails.js"></script>
         <script defer src="./filterDrinks.js"></script>
-        <script defer src="./dropdown.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com"> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
@@ -37,51 +36,44 @@
 <div id="details-body">
     <div id="detail-div">
         <div id="display-classic-drink">
-            <h2 id="details-title">EXAMPLE</h2>
-            <div id="drink-details">
+                 <h2 id="details-title"></h2>
+                    <div id="drink-details">
+                        <img id ="display-image" src="" alt=""> 
+                        <!-- image from menu inserted here -->
+                        <ul id = "ingredients-list"> 
+                            <!-- little ingredient bubbles go here from js -->
+                        </ul> 
+                    </div>
                 
-                <img id ="display-image"src="https://m.media-amazon.com/images/I/713XPPpQ8QS._AC_SX679_.jpg" alt="test-pic" height="400px" width="400px"> 
-                <ul id = "ingredients-list"> -->
-
-                </ul> 
-            </div>
-                
+                    <div id="edit-drink-div">
+                        <form id="edit-drink-dropdown"> 
+                            <label for="add-ingredient">Add your poison:</label><br>
+                            <input type="text" id="add-ingredient" name="add-ingredient" placeholder="Ingredient"><br>
+                            <div id="autocomplete-list">
+                                <ul>
+                                    <!-- DROPDOWN INGREDIENT LIST GOES HERE-->
+                                </ul>
+                            </div>
+                            
+                            <div id="ingredients-buttons">
+                                <span class="ingredient-tags">sample
+                                    <button class="remove-tag">x</button>
+                                </span>
+                            </div>
             
-            <div id="edit-drink-div">
-                <form id="edit-drink-dropdown"> 
-                    <label for="add-ingredient">Add your poison:</label><br>
-                    <input type="text" id="add-ingredient" name="add-ingredient" placeholder="Ingredient"><br>
-                    <div id="autocomplete-list">
-                        <ul>
-                            <!-- <li>Vodka</li>
-                            <li>Lemon</li>
-                            <li>Lime</li>
-                            <li>Grapefruit</li> -->
-                        </ul>
+                            <label for="mix"></label><br>
+                            <input type="submit" id="mix" name="mix" value="Mix it in!">
+                        </form>
+                        
                     </div>
-                    
-                    <!-- <label for="mixer-1">Mixer 1:</label><br>
-                    <input type="text" id="mixer-1" name="mixer-1"><br>
-                    
-                    <label for="mixer-2">Mixer 2:</label><br>
-                    <input type="text" id="mixer-2" name="mixer-2"><br> -->
-                    <div id="ingredients-buttons">
-                        <span class="ingredient-tags">sample
-                            <button class="remove-tag">x</button>
-                        </span>
-                    </div>
-    
-                    <label for="mix"></label><br>
-                    <input type="submit" id="mix" name="mix" value="Mix it in!">
-                </form>
-                
+                </div>
             </div>
-        </div>
-        <div id = "filter-button-div">
+    
+            <div id = "filter-button-div">
             <button id = "filter-button"type="button">Click Me!</button>
-        </div>
+         </div>
 
-       <div id="filter-drink-div">
+            <div id="filter-drink-div">
             <form id="filter-drink-form">
                 <div class = "img-container liquor"><img id="vodka-img"class="img-container"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
                 <div class = "img-container liquor"><img id="gin-img"src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" height="150" width="200"></div>
