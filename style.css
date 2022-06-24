@@ -154,10 +154,6 @@ p {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.2);
-    
-    
-    
-
 }
 
 #create-drink-div {
@@ -255,7 +251,6 @@ a:hover {
 .circle-drink {
     border-radius: 50%;
     margin: 10px;
-    background-color: grey;
     padding: 10px;
 } 
 
@@ -277,8 +272,7 @@ a:hover {
     margin: 10px;
 }
 #filter-drink-form img:hover {
-    transform: scale(1.5);
-    transform: rotate(.07125turn);
+    transform: scale(1.1);
 }
 #filter-drink-div {
     position: absolute;
@@ -302,6 +296,9 @@ a:hover {
     width: 100%;
     display: block;
     color: black;
+    font-size: 32px;
+    letter-spacing: .4ch;
+    font-weight: 700;
 }
 #mixer-container {
     display: flex;
@@ -383,6 +380,7 @@ a:hover {
     transform: translate(-50%, -50%);
     width: 55%;
     height: 85%;
+    overflow: hidden;
 
 }
 #filter-drink-display h1 {
@@ -390,15 +388,19 @@ a:hover {
 }
 #filter-drink-display .close {
     position: absolute;
-    right: 0;
+    width: 100%;
+    height: 20px;
     top: 0;
+    left: 0;
     border: 2px black solid;
     margin: 0;
-    background-color: red;
+    background-color: black
 }
 #filter-drink-display .close:hover {
-cursor: pointer;
+    cursor: pointer;
+    background-color: red;
 }
+
 #other-matched-drinks {
     display: flex;
     flex-direction: row;
@@ -409,19 +411,39 @@ cursor: pointer;
 #other-matched-drinks h1 {
     display: block;
     width: 100%;
-    color: red;
 }
 .img-container.liquor{
     border-radius: 10px;
 }
-
-.ingredient-container {
-    border-radius: 50%;
-    margin: 10px;
-    background-color: grey; 
-    padding: 10px;
-    overflow: hidden;
+.img-container {
+    box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
 }
+.img-container:hover {
+    box-shadow: 0 5px 10px rgba(0,0,255, 0.05), 0 15px 40px rgba(0,0,255,.2);
+}
+
 .background-color-class {
     background-color: green;
+}
+.highlight-ingredient {
+    box-shadow: 0 10px 30px rgba(0,255,0,.05), 0 30px 80px rgba(0,255,0,.2);
+}
+.img-container.left {
+    padding: 8px;
+}
+.img-container.left h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: orange;
+}
+.img-container.left .filter-ingredients {
+    display: flex;
+    background-color: lightblue;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+}
+.filter-bg {
+    filter: blur(10px);
 }

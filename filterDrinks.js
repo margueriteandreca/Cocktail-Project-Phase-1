@@ -8,7 +8,8 @@ const mostMatchedDrinkNode = document.getElementById("most-matched-drink-img")
 const filterImgNode = filterDrinkDisplayNode.querySelectorAll("img")
 const alchNodes = filterDrinkNode.querySelectorAll(".liquor img")
 const closeDisplay = filterDrinkDisplayNode.querySelector(".close")
-
+const detailDiv = document.getElementById("display-classic-drink")
+const drinkMenu = document.getElementById("drink-menu")
 //Regex to check attributes of api
 const regex = new RegExp("strIngredient","g")
 
@@ -28,10 +29,15 @@ toggleShow.addEventListener("click",()=>{
     if (isToggleShow === true) {
         filterDrinkNode.style.display = "none"
         isToggleShow = false
+        drinkMenu.classList.remove("filter-bg")
+        detailDiv.classList.remove("filter-bg")
     }
     else {
         filterDrinkNode.style.display = "flex"
         isToggleShow = true
+        drinkMenu.classList.add("filter-bg")
+        detailDiv.classList.add("filter-bg")
+
     }
 })
 
@@ -41,7 +47,8 @@ closeDisplay.addEventListener("click",()=>{
         img.removeAttribute("src")
     })
     filterDrinkDisplayNode.style.display = "none"
-
+    detailDiv.classList.remove("filter-bg")
+    drinkMenu.classList.remove("filter-bg")
 })
 
 //
@@ -53,7 +60,7 @@ function addClickToggle(obj,node) {
         obj[item.id] = false
         item.addEventListener("click",()=>{
            obj[item.id] = !obj[item.id]
-           item.parentElement.classList.toggle("background-color-class")
+           item.parentElement.classList.toggle("highlight-ingredient")
         })
     
     })
@@ -107,15 +114,15 @@ function displayMatchDrink(data){
             break;
         }
     }
+    
 }
 
 function displayIngridients(ingredient,node) {
-    console.log(node)
     const ingNode = document.createElement("span")
     ingNode.textContent = ingredient
     ingNode.classList.add("ingredient-tags","ingredient-position")
     node.append(ingNode)
-
+    console.log
 }
 
 function comparePossibleDrinks(drinksByIngredient) {
@@ -143,5 +150,3 @@ function displayRec(recArray) {
         fetchMatchDrinks(key)
     })
 }
-
-
