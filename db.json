@@ -31,12 +31,7 @@
       "name": "Martini",
       "ingredients": [
         "gin",
-        "dry vermouth",
-        "olive",
-        "lemon",
-        "lemon juice",
-        "lemon",
-        "triple sec"
+        "dry vermouth"
       ],
       "glass": "Martini glass",
       "alcohol": "gin",
