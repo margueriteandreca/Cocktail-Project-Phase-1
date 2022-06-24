@@ -5,6 +5,7 @@ const detailsDiv = document.getElementById("display-classic-drink");
 const detailImageContainer = document.getElementById("drink-details");
 const detailTitle = document.getElementById("details-title");
 const menuTitleDiv = document.getElementById("menu-title");
+const menuSubtitle = document.getElementById("menu-subtitle")
 let menuImageGlobal
 
 
@@ -65,7 +66,7 @@ function populateDetailsfromMenu(drink) {
 };
 
 menuTitleDiv.addEventListener("mouseover", () => {
-    const menuSubtitle = document.createElement("h3");
+    // const menuSubtitle = document.createElement("h3");
     menuSubtitle.textContent = "Pick and edit a classic";
     menuSubtitle.setAttribute("id", "menu-subtitle")
     menuTitleDiv.append(menuSubtitle);
@@ -75,7 +76,7 @@ menuTitleDiv.addEventListener("mouseover", () => {
 menuTitleDiv.addEventListener("mouseout", () => {
     const menuSubtitleExpanded = document.getElementById("menu-subtitle");
     if (menuSubtitleExpanded) {
-        menuSubtitleExpanded.remove();
+        setTimeout(() => {menuSubtitleExpanded.remove()}, 1200);
     }
 
 })
