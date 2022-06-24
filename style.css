@@ -384,7 +384,7 @@ a:hover {
 }
 #filter-drink-display .close {
     position: absolute;
-    right: 0;
+    width: 100%;
     top: 0;
     border: 2px black solid;
     margin: 0;
