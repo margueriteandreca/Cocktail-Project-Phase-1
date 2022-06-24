@@ -17,8 +17,6 @@ body {
 
 }
 #main-container {
-    
-    /* background-color: rgb(36, 36, 36); */
     width: 100%;
     height: 100vh;
     display: flex;
@@ -34,10 +32,7 @@ button:hover,input[type=submit],img:hover  {
 #drink-menu {
     display: flex;
     padding-top: 350px;
-    /* padding-left: 20px;
-    padding-right: 20px; */
     min-width: 300px;
-    /* height: 100vh; 44, 44, 44*/ 
     background-color: rgb(33, 33, 38);
     justify-content: center;
     flex-direction: column;
@@ -49,6 +44,9 @@ button:hover,input[type=submit],img:hover  {
 
 #details-body {
     width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #inner-menu-div {
@@ -68,19 +66,14 @@ button:hover,input[type=submit],img:hover  {
  }
 
 
-/* #menu-title h3:hover {
-    transform: ;
-} */
-
 #menu-subtitle {
     color: #c8c8c8;
+    font-family: "Noto Serif Display", serif;
+    font-size: 12px;
     font-style: italic;
+    letter-spacing: 2px;
     padding: 0px;
     margin: 0px;
-}
-
-h2 {
-    color: whitesmoke;
 }
 
 
@@ -92,17 +85,10 @@ p {
     display: list-item;
     font-size: 30px;
     letter-spacing: 4px;
-    text-decoration: underline;
     padding: 0px;
     margin: 0px;
 
 }
-
-#details-title {
-    font-family: 'Noto Serif Display', serif;
-    letter-spacing: 4px;
-}
-
 
 #drink-menu img {
     width: 200px;
@@ -153,36 +139,32 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(91, 91, 91, 0.2);
+    
 }
 
-#create-drink-div {
-    background-color: blueviolet;
-
+#details-title {
+    font-family: "Oswald", sans-serif;
+    font-size: 30px;
+    letter-spacing: 5px;
 }
+
 
 section {
     margin: 50px;
 }
 
-a:link, a:visited {
-    color: rgb(183, 181, 181);
-    text-decoration: none;
-}
-
-a:hover {
-    color:rgb(183, 181, 181);
-    text-decoration: underline;
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 
-/* #edit-drink-dropdown {
-    background-color: aqua;
-      
-} */
 
 #edit-drink-div {
-    /* background-color: blue; */
+    margin-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -198,8 +180,15 @@ a:hover {
     border-radius: 5px;
     background-color: grey;
     width: 180px;
-    
-    
+}
+
+#edit-drink-dropdown {
+    background-color: rgb(68, 68, 68, .2);
+
+}
+
+#add-ingredient {
+    margin-top: 10px;
 }
 
 #autocomplete-list {
@@ -208,7 +197,6 @@ a:hover {
     transform: translate(-50%);
     color: whitesmoke;
     list-style-type: none;
-    /* width: 100%; */
     max-width: 200px;
     margin: 0;
     padding: 0;
@@ -251,11 +239,16 @@ a:hover {
 .circle-drink {
     border-radius: 50%;
     margin: 10px;
+    background-color: grey;
     padding: 10px;
 } 
 
 #filter-button {
-    font-family: "Oswald", sans-serif;
+    /* background-color: rgb(33, 33, 38); */
+    font-family: "Noto Serif Display", serif;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 2px;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -272,7 +265,8 @@ a:hover {
     margin: 10px;
 }
 #filter-drink-form img:hover {
-    transform: scale(1.1);
+    transform: scale(1.5);
+    transform: rotate(.07125turn);
 }
 #filter-drink-div {
     position: absolute;
@@ -296,9 +290,6 @@ a:hover {
     width: 100%;
     display: block;
     color: black;
-    font-size: 32px;
-    letter-spacing: .4ch;
-    font-weight: 700;
 }
 #mixer-container {
     display: flex;
@@ -313,9 +304,10 @@ a:hover {
     color: black;
 
 }
-/* body::-webkit-scrollbar{
 
-} */
+#mix {
+    margin-top: 0px;
+}
 
 
 #ingredients-buttons {
@@ -358,7 +350,7 @@ a:hover {
 }
 
 .remove-tag:hover {
-    color: blueviolet;
+    color: rgb(170, 231, 127);
     cursor: pointer;
 }
 
@@ -380,7 +372,6 @@ a:hover {
     transform: translate(-50%, -50%);
     width: 55%;
     height: 85%;
-    overflow: hidden;
 
 }
 #filter-drink-display h1 {
@@ -388,19 +379,15 @@ a:hover {
 }
 #filter-drink-display .close {
     position: absolute;
-    width: 100%;
-    height: 20px;
+    right: 0;
     top: 0;
-    left: 0;
     border: 2px black solid;
     margin: 0;
-    background-color: black
-}
-#filter-drink-display .close:hover {
-    cursor: pointer;
     background-color: red;
 }
-
+#filter-drink-display .close:hover {
+cursor: pointer;
+}
 #other-matched-drinks {
     display: flex;
     flex-direction: row;
@@ -411,39 +398,19 @@ a:hover {
 #other-matched-drinks h1 {
     display: block;
     width: 100%;
+    color: red;
 }
 .img-container.liquor{
     border-radius: 10px;
 }
-.img-container {
-    box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
-}
-.img-container:hover {
-    box-shadow: 0 5px 10px rgba(0,0,255, 0.05), 0 15px 40px rgba(0,0,255,.2);
-}
 
+.ingredient-container {
+    border-radius: 50%;
+    margin: 10px;
+    background-color: grey; 
+    padding: 10px;
+    overflow: hidden;
+}
 .background-color-class {
     background-color: green;
-}
-.highlight-ingredient {
-    box-shadow: 0 10px 30px rgba(0,255,0,.05), 0 30px 80px rgba(0,255,0,.2);
-}
-.img-container.left {
-    padding: 8px;
-}
-.img-container.left h1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: orange;
-}
-.img-container.left .filter-ingredients {
-    display: flex;
-    background-color: lightblue;
-    padding: 4px;
-    align-items: center;
-    justify-content: center;
-}
-.filter-bg {
-    filter: blur(10px);
 }
