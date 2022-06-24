@@ -1,5 +1,4 @@
-// const filter = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?'
-// //headers for all fetches
+//Global constants
 const filterDrinkNode = document.getElementById("filter-drink-form")
 const ingredientsNode = document.querySelectorAll(".circle-drink img")
 const toggleShow = document.getElementById("filter-button")
@@ -10,14 +9,21 @@ const filterImgNode = filterDrinkDisplayNode.querySelectorAll("img")
 const alchNodes = filterDrinkNode.querySelectorAll(".liquor img")
 const closeDisplay = filterDrinkDisplayNode.querySelector(".close")
 
+//Regex to check attributes of api
 const regex = new RegExp("strIngredient","g")
+
+//Click state objects
 const ingredientValue = {}
 const liquorValue = {}
+//Stores ingridient id:amount of ingridient occurences
+const amountOccur = {}
 
+//Filter menus start off hidden
 let isToggleShow = false
 filterDrinkNode.style.display = "none"
 filterDrinkDisplayNode.style.display = "none"
 
+//Button to toggle filter visibility
 toggleShow.addEventListener("click",()=>{
     if (isToggleShow === true) {
         filterDrinkNode.style.display = "none"
@@ -29,6 +35,7 @@ toggleShow.addEventListener("click",()=>{
     }
 })
 
+//Button to close filter results
 closeDisplay.addEventListener("click",()=>{
     allImg.forEach(img=> {
         img.removeAttribute("src")
@@ -37,6 +44,7 @@ closeDisplay.addEventListener("click",()=>{
 
 })
 
+//
 addClickToggle(ingredientValue,ingredientsNode)
 addClickToggle(liquorValue,alchNodes)
 
@@ -91,26 +99,24 @@ function displayMatchDrink(data){
             const parentEle = filterImgNode[i].parentElement
             filterImgNode[i].src = drinkData.strDrinkThumb
             parentEle.querySelector("h1").textContent = drinkData.strDrink 
-            console.log(parentEle)
             for (let property in drinkData) {
                 if (drinkData[property] && regex.test(property)) {
-                    displayIngridients(drinkData[property],parentEle.querySelector(".filter-ingridients"))
+                    displayIngridients(drinkData[property],parentEle.querySelector(".filter-ingredients"))
                 }
             }
-            
             break;
         }
     }
 }
+
 function displayIngridients(ingredient,node) {
     console.log(node)
     const ingNode = document.createElement("span")
     ingNode.textContent = ingredient
-    ingNode.classList.add("ingredient-tags")
+    ingNode.classList.add("ingredient-tags","ingredient-position")
     node.append(ingNode)
 
 }
-const amountOccur = {}
 
 function comparePossibleDrinks(drinksByIngredient) {
     drinksByIngredient.drinks.forEach(drink=>{
@@ -129,16 +135,13 @@ function comparePossibleDrinks(drinksByIngredient) {
             }
         }
     }
-    displayRec(recArray)
-    
+    displayRec(recArray)  
 }
 
 function displayRec(recArray) {
     Object.keys(recArray).forEach(key=> {
         fetchMatchDrinks(key)
     })
-
 }
-
 
 
