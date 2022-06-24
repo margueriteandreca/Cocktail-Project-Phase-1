@@ -1,8 +1,9 @@
 html {
-    background: rgb(36, 36, 36);  
-    background-image: url(https://images.unsplash.com/photo-1529604278261-8bfcdb00a7b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80);
+    /* background: rgb(36, 36, 36);   */
+    background-image: url(./greyblur.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
 }
 
 body {
@@ -91,8 +92,12 @@ p {
     font-size: 30px;
     letter-spacing: 4px;
     text-decoration: underline;
-    
 
+}
+
+#details-title {
+    font-family: 'Noto Serif Display', serif;
+    letter-spacing: 4px;
 }
 
 
@@ -111,10 +116,6 @@ p {
     filter: drop-shadow(0 0 0.5rem whitesmoke);
 }
 
-/* #background-div {
-    background-color: greenyellow;
-} */
-
 #drink-details {
     display: flex;
     position: relative;
@@ -128,6 +129,7 @@ p {
 #drink-details img {
     width: 400px;
     height: 400px;
+    border-radius: 5px;
 }
 
 #details-body {
@@ -192,9 +194,10 @@ a:hover {
     padding: 10px 10px;
     /* width: calc(100% -30px); */
     border: none;
-    border-radius: 1px;
+    border-radius: 5px;
     background-color: grey;
     width: 180px;
+    
     
 }
 
@@ -252,11 +255,12 @@ a:hover {
 } 
 
 #filter-button {
+    font-family: "Oswald", sans-serif;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    height: 15%;
-    width: 15%;
+    height: 10%;
+    width: 10%;
     border-radius: 20px;
     z-index: 5;
 }
@@ -315,11 +319,8 @@ a:hover {
 #ingredients-buttons {
     display: flex;
     flex-direction: row;
-<<<<<<< Updated upstream
-=======
     flex-wrap: wrap;
     margin-top: 20px;
->>>>>>> Stashed changes
     max-width: 500px;
 
 }

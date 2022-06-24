@@ -45,7 +45,7 @@ function createDrinksMenu(drinksArray) {
 }
 
 function populateDetailsfromMenu(drink) {
-    detailTitle.textContent = drink.name
+    detailTitle.textContent = drink.name.toUpperCase();
     detailsImage.src = drink.image
     detailsImage.alt = drink.name
     detailImageContainer.append(detailsImage);
