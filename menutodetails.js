@@ -4,6 +4,8 @@ const detailsImage = document.getElementById("display-image");
 const detailsDiv = document.getElementById("display-classic-drink");
 const detailImageContainer = document.getElementById("drink-details");
 const detailTitle = document.getElementById("details-title");
+const menuTitleDiv = document.getElementById("menu-title");
+let menuImageGlobal
 
 
 //elements regarding dropdown/submit 
@@ -12,6 +14,8 @@ const ingredientListResults = document.getElementById("autocomplete-list");
 const ingredientInput = document.getElementById("add-ingredient");
 const buttonsDiv = document.getElementById("ingredients-buttons");
 
+let currentDrinkId; 
+let currentTagsArray = [];
 
 
 fetch("http://localhost:3000/drinks")
@@ -23,14 +27,18 @@ fetch("http://localhost:3000/drinks")
     
 });
 
+
+
 function createDrinksMenu(drinksArray) {
     drinksArray.forEach(drink => {
         const menuImage = document.createElement("img");
         menuImage.src = drink.image;
         menuImage.alt = drink.name;
         innerMenuDiv.append(menuImage);
+        menuImageGlobal = menuImage
         menuImage.addEventListener("click", () => {
             populateDetailsfromMenu(drink);
+            console.log(drink.id)
         })
 
     });
@@ -42,26 +50,43 @@ function populateDetailsfromMenu(drink) {
     detailsImage.alt = drink.name
     detailImageContainer.append(detailsImage);
     buttonsDiv.innerHTML = ""
+    console.log(drink)
+    currentTagsArray = [];
+    currentDrinkId = drink.id;
     drink.ingredients.forEach(ingredient => {
         console.log(ingredient)
         const existingIngredient = document.createElement("span")
         existingIngredient.className = "ingredient-tags"
         existingIngredient.textContent = ingredient
-        buttonsDiv.append(existingIngredient);
-
+        buttonsDiv.append(createIngredientTag(ingredient));
+        currentTagsArray.push(ingredient);
     })
    
 };
+
+menuTitleDiv.addEventListener("mouseover", () => {
+    const menuSubtitle = document.createElement("h3");
+    menuSubtitle.textContent = "Pick and edit a classic";
+    menuSubtitle.setAttribute("id", "menu-subtitle")
+    menuTitleDiv.append(menuSubtitle);
+
+});
+
+menuTitleDiv.addEventListener("mouseout", () => {
+    const menuSubtitleExpanded = document.getElementById("menu-subtitle");
+    if (menuSubtitleExpanded) {
+        menuSubtitleExpanded.remove();
+    }
+
+})
 
 
 
 fetch("http://localhost:3000/ingredients")
 .then(res => res.json())
 .then(ingredientsArray => {
-    // populateDropdown(ingredientsArray);
     createDropDownIngredients(ingredientsArray)
 });
-
 
 
 
@@ -92,49 +117,87 @@ function populateDropdown(results) {
     ingredientListResults.innerHTML = `<ul>${content}</ul>`;
     // ingredientForButton = `${content}`
     console.log(ingredientListResults)
-    console.log(content)
-    console.log(results);
+    // console.log(content)
+    // console.log(results);
     ingredientListResults.classList.add("show");
 
     
 };
 
-ingredientListResults.addEventListener("click", (e) => {
-    console.log(e.target.textContent);
-    const ingredientTag = document.createElement("span");
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "x"
-    removeButton.className = "remove-tag"
-    removeButton.addEventListener("click", () => {
-        removeButton.parentNode.remove();
-    });
-    ingredientTag.textContent = e.target.textContent.toLowerCase();
-    ingredientTag.className = "ingredient-tags"
-    ingredientTag.append(removeButton);
-    buttonsDiv.append(ingredientTag);
-
-})
-
-// dropDown.addEventListener("submit", (e) => {
+// ingredientListResults.addEventListener("click", (e) => {
+//     console.log(e.target.textContent);
+//     createIngredientTag();
+    // const ingredientTag = document.createElement("span");
+    // const removeButton = document.createElement("button");
+    // removeButton.textContent = "x"
+    // removeButton.className = "remove-tag"
+    // removeButton.addEventListener("click", () => {
+    //     removeButton.parentNode.remove();
+    // });
+//     ingredientTag.textContent = e.target.textContent.toLowerCase(); 
+//     ingredientTag.append(removeButton);
+//     ingredientTag.className = "ingredient-tags"
+//     buttonsDiv.append(ingredientTag);
 
 // })
+
+// function createIngredientTag() {
+//     const ingredientTag = document.createElement("span");
+//     const removeButton = document.createElement("button");
+//     removeButton.textContent = "x"
+//     removeButton.className = "remove-tag"
+//     removeButton.addEventListener("click", () => {
+//         removeButton.parentNode.remove();
+//     });
+// }
+
+
+//click to make tag
+ingredientListResults.addEventListener('click', e => {
+    const ingredientToAdd = e.target.textContent.toLowerCase()
+    const ingredientTag = createIngredientTag(ingredientToAdd);
+    buttonsDiv.append(ingredientTag);
+    currentTagsArray.push(ingredientToAdd);
+});
+
+
+//create tag w x given tag text received from input of dropdown
+function createIngredientTag(tagText) {
+    const ingredientTag = document.createElement('span');
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'x';
+    removeButton.className = 'remove-tag';
+    removeButton.addEventListener('click', () => {
+        removeButton.parentNode.remove();
+        currentTagsArray = currentTagsArray.filter(tag => tag !== tagText);
+    });
+    ingredientTag.textContent = tagText;
+    ingredientTag.append(removeButton);
+    ingredientTag.className = 'ingredient-tags';
+
+    return ingredientTag;
+};
+
+
+ dropDown.addEventListener("submit", (e) => {
+    e.preventDefault();
+  
+    fetch(`http://localhost:3000/drinks/${currentDrinkId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            ingredients: [...currentTagsArray]
+        }),
+        headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+  },
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data.id));
+});
+    
+
+
 //TO DO - SUBMIT INGREDIENT TAGS, POST TO JSON 
-// add X's to default ingredients 
-//fix wacky ass dropdown
 
 
-
-// function populateDetailsfromMenu(drink) {
-//     const existingImage = document.getElementById("drink-detail-main-image");
-//     if (existingImage) {
-//         existingImage.src = drink.image
-//         existingImage.alt = drink.name
-//     } else {
-//         const drinkImage = document.createElement("img");
-//         drinkImage.src = drink.image
-//         drinkImage.alt = drink.name
-//         drinkImage.id = "drink-detail-main-image";
-//         detailImageContainer.append(drinkImage);
-//     }
-
-// };
