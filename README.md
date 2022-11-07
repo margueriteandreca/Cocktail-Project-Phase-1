@@ -12,3 +12,8 @@ they like, On the bottom-right of the window, the user can click the "Find your 
 allow them to select their prefered ingredients by clicking on their corresponding images. When they are ready, they click the 
 "Let's Mix" button, where they will receive various cocktail suggestions. These suggestions are fetched from the Cocktail Database API,
 and provide a much wider range of options than the classics listed on the sidebar. 
+
+<h2>
+Demo Video:
+</h2>
+https://www.loom.com/share/7d367c4f3e0a43cca3a41bf48ec75d58
